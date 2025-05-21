@@ -1,0 +1,51 @@
+{
+    "path_count": 129,
+    "parsed_path_count": 129,
+    "static_analysis_path_count": 2,
+    "static_analysis_parsed_path_count": 2,
+    "is_partial_parse_enabled": true,
+    "is_static_analysis_enabled": true,
+    "read_files_elapsed": 0.08475860000000002,
+    "load_macros_elapsed": 0.4981635000000002,
+    "parse_project_elapsed": 0.2906284000000001,
+    "patch_sources_elapsed": 4.800000000138027e-06,
+    "process_manifest_elapsed": 0.015876800000000024,
+    "load_all_elapsed": 0.9478752000000001,
+    "projects": [
+        {
+            "project_name": "mochi_analysis",
+            "elapsed": 0.2843570999999998,
+            "parsers": [
+                {
+                    "parser": "model",
+                    "elapsed": 0.15468649999999995,
+                    "parsed_path_count": 2
+                },
+                {
+                    "parser": "test",
+                    "elapsed": 0.12650589999999973,
+                    "parsed_path_count": 1
+                }
+            ],
+            "parsed_path_count": 3
+        },
+        {
+            "project_name": "dbt_postgres",
+            "elapsed": 0.003264600000000062,
+            "parsers": [],
+            "parsed_path_count": 0
+        },
+        {
+            "project_name": "dbt",
+            "elapsed": 0.00294839999999974,
+            "parsers": [
+                {
+                    "parser": "doc",
+                    "elapsed": 0.0001622999999999486,
+                    "parsed_path_count": 1
+                }
+            ],
+            "parsed_path_count": 1
+        }
+    ]
+}
