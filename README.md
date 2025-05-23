@@ -47,6 +47,10 @@ After clustering, Cluster 4 had the highest overall acceptability (mean = 5.3, m
 
 PCA interpretation indicated that Cluster 4 individuals valued creaminess, sweetness, and honey flavour. These sensory traits may serve as optimisation targets in future formulation development.
 
+![PC1_2](https://github.com/user-attachments/assets/61ba8312-ef34-4c2b-bd4b-b971ff4e2eef)
+![PC2_3](https://github.com/user-attachments/assets/eb8b0060-33d5-425a-a821-e1012cb5c3c8)
+![PC1_3](https://github.com/user-attachments/assets/d1345693-2b59-4c5a-9644-356172913716)
+
 ## Data Preparation with SQL & dbt
 
 The initial raw data is ingested into the PostgreSQL database via a Python script located at `scripts/Import Excel.py`. This script handles the secure connection to the database and uploads the raw Excel data, which is then further transformed using dbt within the PostgreSQL environment.
@@ -164,4 +168,4 @@ The final analysed dataset, enriched with PCA components and K-Means clustering 
 
 - **Context Factors:** Real-world variables like pricing, type of packaging, and market demographics were not considered.
 
-- **Panel Variability:** Results depend on the consistency of the untrained sensory panel even though participants shared similar demographic backgrounds
+- **Panel Variability:** Results depend on the consistency of the untrained sensory panel even though participants shared similar demographic backgrounds.
