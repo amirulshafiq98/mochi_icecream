@@ -1,8 +1,8 @@
-# Mochi Sensory Analysis and Formulation Optimization
+# Mochi Sensory Analysis and Formulation Optimisation
 
 ## Project Background
 
-Understanding the sensory properties of food products is crucial in food science and consumer research. This sensory evaluation analyzes 5 formulations of Mochi Ice-Cream, each rated by 21 untrained individuals using a 9-point Likert scale (1 = strongly dislike, 9 = strongly like) across several sensory attributes.
+Understanding the sensory properties of food products is crucial in food science and consumer research. This sensory evaluation analyses 5 formulations of Mochi Ice-Cream, each rated by 21 untrained individuals using a 9-point Likert scale (1 = strongly dislike, 9 = strongly like) across several sensory attributes.
 
 The objective is to identify the most preferred formulation for upscaling by analysing its sensory profile and acceptability. To achieve this, Principal Component Analysis (PCA) and K-Means Clustering are used to segment consumer preferences and highlight which formulations align with key sensory traits. This approach also reveals which attributes were most valued by the panel, informing potential areas for formulation improvement.
 
@@ -14,7 +14,7 @@ This project mimics a real-world data pipeline, featuring:
 
 - **Advanced Analytics:** Python (via Jupyter Notebook) performs PCA for dimensionality reduction, K-Means Clustering for product segmentation and boxplots to compare acceptability scores among clusters.
 
-- **Insights & Visualization:** Interactive plots support data exploration and decision-making.
+- **Insights & Visualisation:** Interactive plots support data exploration and decision-making.
 
 **Key Technologies Used:** PostgreSQL, dbt, Python (Pandas, Scikit-learn, Plotly), Jupyter Notebook, Git.
 
@@ -35,6 +35,8 @@ The pivoted dataset contains detailed sensory evaluation results for various Moc
 * `creaminess_score`: Sensory score for creaminess.
 * `overall_acceptability_score`: An overall consumer acceptance score.
 
+The raw sensory evaluation data for Mochi formulations is stored in `data/raw/Mochi Flavours Sensory.csv`. This Excel file contains the initial panel evaluation scores before any processing or transformation.
+
 ## Executive Summary
 
 ### Overview:
@@ -46,6 +48,8 @@ After clustering, Cluster 4 had the highest overall acceptability (mean = 5.3, m
 PCA interpretation indicated that Cluster 4 individuals valued creaminess, sweetness, and honey flavour. These sensory traits may serve as optimisation targets in future formulation development.
 
 ## Data Preparation with SQL & dbt
+
+The initial raw data is ingested into the PostgreSQL database via a Python script located at `scripts/Import Excel.py`. This script handles the secure connection to the database and uploads the raw Excel data, which is then further transformed using dbt within the PostgreSQL environment.
 
 Before performing any analysis in Python, raw sensory evaluation data was ingested and transformed using SQL and dbt:
 
@@ -73,19 +77,19 @@ This section provides a high-level overview of the technical implementation and 
 * `scikit-learn`: For PCA and K-Means Clustering.
 * `pandas`: For robust data manipulation and analysis.
 * `numpy`: For efficient numerical operations.
-* `matplotlib` & `seaborn`: For creating static data visualizations.
-* `plotly` & `plotly-express`: For generating interactive and dynamic data visualizations, particularly useful for 3D biplots.
+* `matplotlib` & `seaborn`: For creating static data visualisations.
+* `plotly` & `plotly-express`: For generating interactive and dynamic data visualisations, particularly useful for 3D biplots.
 * `sqlalchemy` & `psycopg2-binary`: For establishing a secure and efficient connection between Python and the PostgreSQL database.
 
 ### Code Implementation Overview:
 
-The Python script in the Jupyter Notebook is structured to guide the analysis from data ingestion to visualization and insight generation:
+The Python script in the Jupyter Notebook is structured to guide the analysis from data ingestion to visualisation and insight generation:
 
 * **Initial Data Handling:** Securely connects to PostgreSQL and loads the dbt-transformed sensory dataset into a Pandas DataFrame. Initial data checks (e.g., blank rows) ensure integrity.
 
 ![First](https://github.com/user-attachments/assets/6f9717d5-f9c3-426e-8f7b-8053a51924c8)
 
-* **Data Preprocessing and PCA Application:** Uses `StandardScaler` to normalize sensory scores, ensuring fair comparison across attributes. PCA is then applied to reduce dimensionality and highlight dominant trends in sensory perception. A Scree Plot was generated to evaluate how much variance is explained by each principal component. This helped determine how many components to retain. The first three PCs together explained approximately 80% of the total variance, which was sufficient to capture the majority of trends in the sensory data. These three components were used for clustering and visualizations.
+* **Data Preprocessing and PCA Application:** Uses `StandardScaler` to normalize sensory scores, ensuring fair comparison across attributes. PCA is then applied to reduce dimensionality and highlight dominant trends in sensory perception. A Scree Plot was generated to evaluate how much variance is explained by each principal component. This helped determine how many components to retain. The first three PCs together explained approximately 80% of the total variance, which was sufficient to capture the majority of trends in the sensory data. These components were then used for downstream clustering and visualization tasks.
   
 ![Second_1](https://github.com/user-attachments/assets/618f7932-668f-45f4-b916-ce9788409db5)
 ![Second_2](https://github.com/user-attachments/assets/2de732f3-33bf-4f3e-b897-abf196f274d9)
@@ -94,7 +98,7 @@ The Python script in the Jupyter Notebook is structured to guide the analysis fr
 
 ![Fourth](https://github.com/user-attachments/assets/acab9117-bc2c-48c6-9caf-c387c5d63615)
 
-* **Clustering and Visualization Generation:** Performs K-Means Clustering on PCA-transformed data to identify preference segments. Visualisations include explained variance plots, 2D PCA biplots, and interactive 3D plots for cluster interpretation.
+* **Clustering and Visualisation Generation:** Performs K-Means Clustering on PCA-transformed data to identify preference segments. Visualisations include explained variance plots, 2D PCA biplots, and interactive 3D plots for cluster interpretation.
 
 ![Fifth_1](https://github.com/user-attachments/assets/90dea725-441f-437e-baa1-21b621fff8f7)
 ![Fifth_2](https://github.com/user-attachments/assets/3dde6329-5617-4b00-a28a-4dae95c31f52)
@@ -110,6 +114,9 @@ The Python script in the Jupyter Notebook is structured to guide the analysis fr
 ![Export](https://github.com/user-attachments/assets/a39681e2-2b6a-4fab-9313-f6cd85b5bd24)
 
 ### PCA Implementation Details:
+
+The final analysed dataset, enriched with PCA components and K-Means clustering assignments can be found here `data/processed/mochi_pca_clustered_data.csv`. This contains the comprehensive results of the sensory data analysis and can be used for further reporting or visualisation.
+
 - **Standardization:** Ensures each feature contributes equally using `StandardScaler`.
 
 - **Principal Components:** PC1, PC2  and PC3 captured the majority of variance (~80%).
@@ -143,8 +150,8 @@ The Python script in the Jupyter Notebook is structured to guide the analysis fr
 
 ## Recommendations
 
-- Use cluster analysis to select top-performing formulations if certain sensory profiles are valued over others.
-
+- Use cluster analysis to select top-performing formulations when targeting specific sensory preferences (e.g., sweetness, creaminess)
+  
 - Formulation 1 from Cluster 4 is the best candidate for upscaling due to it having the highest average acceptability score.
 
 - Conduct a large scale sensory evaluation (>100 panellists) to validate findings in real market settings.
@@ -157,4 +164,4 @@ The Python script in the Jupyter Notebook is structured to guide the analysis fr
 
 - **Context Factors:** Real-world variables like pricing, type of packaging, and market demographics were not considered.
 
-- **Panel Variability:** Results depend on the consistency of the untrained sensory panel despite them all having similar backgrounds.
+- **Panel Variability:** Results depend on the consistency of the untrained sensory panel even though participants shared similar demographic backgrounds
