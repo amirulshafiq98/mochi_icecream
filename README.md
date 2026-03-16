@@ -1,3 +1,5 @@
+<img width="1376" height="768" alt="Mochi-icecream" src="https://github.com/user-attachments/assets/ca2921e6-fdd6-48ee-8635-7690d789002a" />
+
 # Mochi Sensory Analysis and Formulation Optimisation
 
 ## Project Background
